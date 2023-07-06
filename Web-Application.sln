@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee_MVC", "Employee_Management\Employee_MVC.csproj", "{B428EED8-E50A-4E82-88C1-189FBFB00EC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeMVC", "Employee_Management\EmployeeMVC.csproj", "{B428EED8-E50A-4E82-88C1-189FBFB00EC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeModel", "CommonModel\EmployeeModel.csproj", "{E74C46E0-755D-4056-845C-BD807AAF9D61}"
 EndProject
