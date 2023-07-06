@@ -51,13 +51,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonModel\CommonModel.csproj">
+    <ProjectReference Include="..\CommonModel\EmployeeModel.csproj">
       <Project>{e74c46e0-755d-4056-845c-bd807aaf9d61}</Project>
-      <Name>CommonModel</Name>
+      <Name>EmployeeModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
+    <ProjectReference Include="..\Repository\EmployeeRepository.csproj">
       <Project>{f68bcac7-b210-4837-b6c4-24debd47714b}</Project>
-      <Name>Repository</Name>
+      <Name>EmployeeRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

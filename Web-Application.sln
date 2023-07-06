@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee_Management", "Employee_Management\Employee_Management.csproj", "{B428EED8-E50A-4E82-88C1-189FBFB00EC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee_MVC", "Employee_Management\Employee_MVC.csproj", "{B428EED8-E50A-4E82-88C1-189FBFB00EC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonModel", "CommonModel\CommonModel.csproj", "{E74C46E0-755D-4056-845C-BD807AAF9D61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeModel", "CommonModel\EmployeeModel.csproj", "{E74C46E0-755D-4056-845C-BD807AAF9D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{F68BCAC7-B210-4837-B6C4-24DEBD47714B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeRepository", "Repository\EmployeeRepository.csproj", "{F68BCAC7-B210-4837-B6C4-24DEBD47714B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{14F01E42-6D89-430A-BD73-920E8BB93780}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeServices", "Service\EmployeeServices.csproj", "{14F01E42-6D89-430A-BD73-920E8BB93780}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

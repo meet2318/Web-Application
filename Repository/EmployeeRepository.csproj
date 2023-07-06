@@ -56,9 +56,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonModel\CommonModel.csproj">
+    <ProjectReference Include="..\CommonModel\EmployeeModel.csproj">
       <Project>{e74c46e0-755d-4056-845c-bd807aaf9d61}</Project>
-      <Name>CommonModel</Name>
+      <Name>EmployeeModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -203,17 +203,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonModel\CommonModel.csproj">
+    <ProjectReference Include="..\CommonModel\EmployeeModel.csproj">
       <Project>{e74c46e0-755d-4056-845c-bd807aaf9d61}</Project>
-      <Name>CommonModel</Name>
+      <Name>EmployeeModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
+    <ProjectReference Include="..\Repository\EmployeeRepository.csproj">
       <Project>{f68bcac7-b210-4837-b6c4-24debd47714b}</Project>
-      <Name>Repository</Name>
+      <Name>EmployeeRepository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service\Service.csproj">
+    <ProjectReference Include="..\Service\EmployeeServices.csproj">
       <Project>{14f01e42-6d89-430a-bd73-920e8bb93780}</Project>
-      <Name>Service</Name>
+      <Name>EmployeeServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
