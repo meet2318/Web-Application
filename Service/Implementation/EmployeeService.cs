@@ -1,10 +1,13 @@
 ﻿using CommonModel.DbModel;
 using CommonModel.ViewModel;
+using Microsoft.AspNetCore.Identity;
+using Org.BouncyCastle.Crypto.Generators;
 using Repository.Implementation;
 using Repository.Interface;
 using Service.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Service.Implementation
 {
@@ -18,6 +21,28 @@ namespace Service.Implementation
         public EmployeeService(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
+        }
+
+        /// <summary>Gets all data.</summary>
+        /// <param name="emp"></param>
+        public void AddUser(EmpLoginViewModel emp)
+        {
+
+            try
+            {
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(emp.Password);
+                var empViewModel = new EmpLogin()
+                {
+                    Email = emp.Email,
+                    Password = hashedPassword
+                };
+                _employeeRepository.AddUser(empViewModel);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         /// <summary>Adds the employee.</summary>
@@ -153,7 +178,7 @@ namespace Service.Implementation
                 foreach (var Item in employeedesignation)
                 {
                     employeedata.Add(new EmployeeDesignationViewModel()
-                     {
+                    {
                         Id = Item.Id,
                         Designation = Item.Designation,
                     });
@@ -164,4 +189,29 @@ namespace Service.Implementation
             {
                 throw ex;
             }
-        }}}
+        }
+
+
+        public void GetEmpDetail(EmpLoginViewModel employee)
+        {
+            if (employee == null)
+            {
+                throw new Exception("Invalid email or password");
+            }
+
+            var empdetails = _employeeRepository.GetEmpDetails(employee.Email);
+
+            if (empdetails != null && empdetails.Email == employee.Email && BCrypt.Net.BCrypt.Verify(employee.Password, empdetails.Password))
+            {
+                Console.WriteLine("Login Successful");
+            }
+            else
+            {
+                throw new Exception("Invalid email or password");
+            }
+        }
+    }
+
+
+}
+

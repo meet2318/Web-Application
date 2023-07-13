@@ -17,6 +17,7 @@ namespace Repository.Interface
         /// <summary>Gets all data.</summary>
         IList<EmployeeDetails> GetAllData();
 
+        EmpLogin GetEmpDetails(string Email);
         /// <summary>Gets the designation.</summary>
         IList<EmployeeDesignation> GetDesignation();
 
@@ -31,6 +32,12 @@ namespace Repository.Interface
         /// <summary>Deletes the employee.</summary>
         /// <param name="id">The identifier.</param>
         void DeleteEmployee(int id);
+
+        /// <summary>Adds the user.</summary>
+        /// <param name="emp">The emp.</param>
+        List<EmpLogin> AddUser(EmpLogin emp);
+
+        
 
 
     }

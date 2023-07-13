@@ -1,18 +1,23 @@
 ﻿using CommonModel.ViewModel;
-
+using System.Web.Mvc;
 using Service.Implementation;
 using Employee_Management;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+
 using System.Collections;
 using System.IO;
 using Service.Interface;
+using System.Web.Security;
+using System.Security.Claims;
+using System.Net;
+using Microsoft.AspNetCore.Http.Authentication;
 
 namespace Employee_Management.Controllers
 {
+    
     public class EmployeeController : Controller
     {
         /// <summary>The employee service</summary>
@@ -25,14 +30,72 @@ namespace Employee_Management.Controllers
             _employeeService = employeeService;
         }
 
-        // GET: Employee
-        /// Indexes this instance.
+        [HttpGet]
         public ActionResult Index()
         {
             IList<EmployeeDetailsViewModel> employeelist = _employeeService.GetAllData();
             return View(employeelist);
         }
+        /// <summary>Creates the user.</summary>
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
 
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult LoginView(EmpLoginViewModel employee)
+        {
+            Session["Email"] = employee.Email;
+                if (ModelState.IsValid)
+                {
+                    if (HttpContext.Session["Email"] != null)
+                    {
+                        _employeeService.GetEmpDetail(employee);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                          return new HttpNotFoundResult();
+                }
+                }
+                return View(employee);
+        }
+
+        /// <summary>Adds the user.</summary>
+        /// <param name="employee">The employee.</param>
+        [HttpPost]
+        public ActionResult AddUser(EmpLoginViewModel employee)
+        {
+            try
+            {
+                if (employee.Password == employee.ConfirmPassword)
+                {
+                    _employeeService.AddUser(employee);
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Password");
+                }
+                return RedirectToAction("CreateUser");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        // GET: Employee
+        /// Indexes this instance.
+    
         /// <summary>Creates this instance.</summary>
         public ActionResult Create()
         {

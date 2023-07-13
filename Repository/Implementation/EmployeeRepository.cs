@@ -1,6 +1,7 @@
 ﻿using CommonModel.DbModel;
 using CommonModel.ViewModel;
 using Dapper;
+using Org.BouncyCastle.Crypto.Generators;
 using Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,26 @@ namespace Repository.Implementation
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+
+        /// <summary>Adds the user.</summary>
+        /// <param name="emp">The emp.</param>
+        public List<EmpLogin> AddUser(EmpLogin emp)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                using (IDbConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString))
+                {
+                    parameter.Add("@Email", emp.Email);
+                    parameter.Add("@Password", emp.Password);
+                    return connection.Query<EmpLogin>("EmpLogin_AddNewUser", parameter, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         /// <summary>Adds the employee.</summary>
         /// <param name="employee">The employee.</param>
@@ -130,5 +151,23 @@ namespace Repository.Implementation
                 return connection.Query<EmployeeDesignation>("Employee-Designation_GetEmployeesDetails", commandType: CommandType.StoredProcedure).ToList();
             }
         }
+
+        public EmpLogin GetEmpDetails(string Email)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                using (IDbConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString))
+                {
+                    parameter.Add("@Email", Email);
+                    return connection.QueryFirstOrDefault<EmpLogin>("EmpLogin_Getall", parameter,commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

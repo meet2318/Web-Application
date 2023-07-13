@@ -13,6 +13,8 @@ namespace Service.Interface
         /// <param name="employee">The employee.</param>
         void AddEmployee(EmployeeDetailsViewModel employee);
         /// <summary>Gets all data.</summary>
+        /// <param name="emp"></param>
+        void AddUser(EmpLoginViewModel emp);
         IList<EmployeeDetailsViewModel> GetAllData();
         /// <summary>Gets the employee details.</summary>
         /// <param name="id">The identifier.</param>
@@ -25,6 +27,8 @@ namespace Service.Interface
         /// <summary>Deletes the employee.</summary>
         /// <param name="id">The identifier.</param>
         void DeleteEmployee(int id);
+
+        void GetEmpDetail(EmpLoginViewModel employee);
 
     }
 }
