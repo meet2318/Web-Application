@@ -54,19 +54,19 @@ namespace Employee_Management.Controllers
         public ActionResult LoginView(EmpLoginViewModel employee)
         {
             Session["Email"] = employee.Email;
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                if (HttpContext.Session["Email"] != null)
                 {
-                    if (HttpContext.Session["Email"] != null)
-                    {
-                        _employeeService.GetEmpDetail(employee);
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                          return new HttpNotFoundResult();
+                    _employeeService.GetEmpDetail(employee);
+                    return RedirectToAction("Index");   
                 }
+                else
+                {
+                    
                 }
-                return View(employee);
+            }
+            return View(employee);
         }
 
         /// <summary>Adds the user.</summary>
